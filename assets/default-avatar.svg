@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gamzaBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5DC" />
+      <stop offset="100%" stop-color="#FFE4A0" />
+    </linearGradient>
+    <linearGradient id="gamzaBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A1887F" />
+      <stop offset="100%" stop-color="#8D6E63" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 배경 원 (따뜻한 감자 크림 옐로우) -->
+  <circle cx="60" cy="60" r="60" fill="url(#gamzaBgGrad)" />
+  
+  <!-- 감자 실루엣 머리 부분 -->
+  <ellipse cx="60" cy="46" rx="22" ry="24" fill="url(#gamzaBodyGrad)" />
+  
+  <!-- 감자 새싹/줄기 디테일 (살짝 귀여운 포인트) -->
+  <path d="M58,22 C56,15 62,13 65,15 C67,17 65,22 60,23 Z" fill="#81C784" />
+  
+  <!-- 실루엣 몸체/어깨 곡선 -->
+  <path d="M24,106 C24,84 40,76 60,76 C80,76 96,84 96,106 C96,112 90,118 60,118 C30,118 24,112 24,106 Z" fill="url(#gamzaBodyGrad)" />
+</svg>

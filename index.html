@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>감자마켓 🥔 - 따뜻한 이웃 중고거래</title>
+  
+  <!-- Pretendard 웹폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <!-- 감자마켓 스타일시트 -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 모바일 프레임 컨테이너 (스마트폰 세로 뷰) -->
+  <div class="mobile-app-container">
+    
+    <!-- 1. 상단 고정 헤더 -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="brand-logo" id="brand-home-btn" role="button" tabindex="0" title="홈으로 이동">
+          <span class="potato-icon">🥔</span>
+          <div class="brand-text-wrap">
+            <h1 class="brand-title">감자마켓</h1>
+            <span class="location-badge">춘천시 감자동 ▾</span>
+          </div>
+        </div>
+        
+        <div class="header-actions" id="header-actions">
+          <button type="button" class="btn-header-write" id="btn-header-write" aria-label="글쓰기">
+            <span class="icon">✏️</span>
+            <span class="text">글쓰기</span>
+          </button>
+
+          <!-- 로그인 전 상태 -->
+          <div class="auth-unlogged-group" id="auth-unlogged-group">
+            <button type="button" class="btn-header-login" id="btn-header-login" aria-label="로그인">
+              로그인
+            </button>
+          </div>
+
+          <!-- 로그인 후 상태 -->
+          <div class="auth-logged-group" id="auth-logged-group" style="display: none;">
+            <span class="header-user-nickname" id="header-user-nickname" title="내 프로필">🥔 닉네임</span>
+            <button type="button" class="btn-header-logout" id="btn-header-logout" aria-label="로그아웃">
+              로그아웃
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. 메인 컨텐츠 영역 -->
+    <main class="app-main">
+      
+      <!-- 카테고리 탭 바 -->
+      <nav class="category-nav-wrapper">
+        <div class="category-tabs" id="category-filters" role="tablist" aria-label="상품 카테고리">
+          <button type="button" class="category-btn active" data-category="전체" role="tab" aria-selected="true">
+            <span class="cat-icon">📦</span> 전체
+          </button>
+          <button type="button" class="category-btn" data-category="디지털" role="tab" aria-selected="false">
+            <span class="cat-icon">📱</span> 디지털
+          </button>
+          <button type="button" class="category-btn" data-category="의류" role="tab" aria-selected="false">
+            <span class="cat-icon">👕</span> 의류
+          </button>
+          <button type="button" class="category-btn" data-category="가전" role="tab" aria-selected="false">
+            <span class="cat-icon">🔌</span> 가전
+          </button>
+          <button type="button" class="category-btn" data-category="도서" role="tab" aria-selected="false">
+            <span class="cat-icon">📚</span> 도서
+          </button>
+          <button type="button" class="category-btn" data-category="기타" role="tab" aria-selected="false">
+            <span class="cat-icon">🎁</span> 기타
+          </button>
+        </div>
+      </nav>
+
+      <!-- 필터 및 정렬 바 -->
+      <section class="filter-bar-section">
+        <div class="filter-left">
+          <span class="product-counter" id="product-count">총 <strong>0</strong>개의 상품</span>
+        </div>
+        
+        <div class="filter-right">
+          <!-- '거래 가능 상품만 보기' 토글 스위치 -->
+          <label class="toggle-switch-label" for="toggle-available-only" title="판매중인 상품만 필터링합니다">
+            <input type="checkbox" id="toggle-available-only" class="toggle-checkbox">
+            <span class="toggle-slider"></span>
+            <span class="toggle-text">거래 가능만</span>
+          </label>
+        </div>
+      </section>
+
+      <!-- 3. 상품 목록 카드 그리드 (1페이지당 9개) -->
+      <section class="product-list-section" aria-label="중고 거래 상품 목록">
+        <div class="product-grid" id="product-grid">
+          <!-- JS로 상품 카드가 동적 렌더링됩니다 -->
+        </div>
+
+        <!-- 검색/필터 결과 없을 때 표시될 빈 상태 영역 -->
+        <div class="empty-state" id="empty-state" style="display: none;">
+          <div class="empty-icon">📦💨</div>
+          <p class="empty-title">조건에 맞는 상품이 없어요!</p>
+          <p class="empty-desc">필터를 바꾸거나 새로운 상품을 등록해보세요.</p>
+          <button type="button" class="btn-empty-write" id="btn-empty-write">
+            ✏️ 첫 번째 상품 등록하기
+          </button>
+        </div>
+
+        <!-- 페이지네이션 -->
+        <div class="pagination-wrapper" id="pagination" aria-label="페이지 내비게이션">
+          <!-- JS로 페이지 번호 버튼들이 동적 렌더링됩니다 -->
+        </div>
+      </section>
+    </main>
+
+    <!-- 플로팅 글쓰기 버튼 (스마트폰 편의용 FAB) -->
+    <button type="button" class="fab-write-btn" id="fab-write-btn" aria-label="상품 등록 글쓰기">
+      <span class="fab-icon">✏️</span>
+      <span class="fab-text">글쓰기</span>
+    </button>
+
+    <!-- 하단 모바일 바텀 네비게이션 탭 -->
+    <footer class="app-bottom-nav">
+      <button type="button" class="nav-item active" id="nav-home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">홈</span>
+      </button>
+      <button type="button" class="nav-item" id="nav-write">
+        <span class="nav-icon">✏️</span>
+        <span class="nav-label">글쓰기</span>
+      </button>
+      <button type="button" class="nav-item" id="nav-chat">
+        <span class="nav-icon">💬</span>
+        <span class="nav-label">채팅</span>
+      </button>
+      <button type="button" class="nav-item" id="nav-my">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">마이페이지</span>
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- 토스트 메시지 컨테이너 -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Supabase JS 라이브러리 및 클라이언트 로드 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/mockData.js"></script>
+  <script src="js/productList.js"></script>
+  <script src="js/detailModal.js"></script>
+  <script src="js/authModal.js"></script>
+  <script src="js/profileModal.js"></script>
+  <script src="js/createModal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
