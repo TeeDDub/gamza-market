@@ -45,6 +45,11 @@ const CreateModal = (() => {
       id: 'p8',
       title: '반려 식물 화분',
       url: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?w=500&auto=format&fit=crop&q=80'
+    },
+    {
+      id: 'p9',
+      title: '카페/음료 교환권',
+      url: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80'
     }
   ];
 
@@ -152,6 +157,7 @@ const CreateModal = (() => {
                   <option value="의류">의류</option>
                   <option value="가전">가전</option>
                   <option value="도서">도서</option>
+                  <option value="교환권">교환권</option>
                   <option value="기타">기타</option>
                 </select>
               </div>
