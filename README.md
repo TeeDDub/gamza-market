@@ -3,6 +3,8 @@
 > **포슬포슬 따뜻한 이웃 간의 중고거래 플랫폼, 감자마켓**  
 > 강원도 춘천시 감자동을 배경으로 이웃과 따뜻한 정을 나누는 중고거래 웹 애플리케이션입니다.
 
+👉 **배포 주소 (Live Demo): [https://gamza-market.vercel.app](https://gamza-market.vercel.app)**
+
 ---
 
 ## ✨ 주요 기능 (Key Features)
